@@ -33,12 +33,14 @@ public class PGC_Mesh : MonoBehaviour
         prim.AddComponent<BoxCollider>();
     }
 
+    //Update the mesh continuously.
     void Update()
     {
         CreateShape();
         UpdateMesh();
     }
 
+    //Function for creating the mesh shape.
     void CreateShape()
     {
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
@@ -47,6 +49,7 @@ public class PGC_Mesh : MonoBehaviour
         int index = 0;
         for(int z = 0; z < (zSize + 1); z++)
         {
+            //This part is for creating the Sin wave effect.
             for(int x = 0; x < (xSize + 1); x++)
             {
                 float y = amp * Mathf.Sin((Mathf.PI * (x / wave)) + Time.time);
@@ -77,6 +80,7 @@ public class PGC_Mesh : MonoBehaviour
 
     }
 
+    //Function for updating the mesh to the shape created through the CreateShape function.
     void UpdateMesh()
     {
         mesh.Clear();
